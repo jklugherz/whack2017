@@ -70,24 +70,22 @@ router.post('/addprofreview', function(req, res) {
   })
 })
 
-router.get('/professor/:id', function(req, res) {
-  var profId = req.params.id;
-  Professor.findById(profId, function(err, professor) {
-    var reviews = [];
-    console.log(professor.reviews);
-    professor.reviews.forEach(function(review) {
-      Review.findById(review, function(err, foundReview) {
-        reviews.push(foundReview);
-        console.log(foundReview);
-      })
-    })
-    res.render('professorPage', {
-      firstName: professor.fname,
-      lastName: professor.lname,
-      reviews: reviews
-    })
-  })
-})
+// router.get('/professor/:id', function(req, res) {
+//   var profId = req.params.id;
+//   var allReviews = [];
+//   Professor.findById(profId)
+//   .then((professor) => {
+//     professor.reviews.forEach(function(review) {
+//       Review.findById(review)
+//       .then((foundReview) => {
+//         allReviews.push(foundReview);
+//         console.log(allReviews)
+//
+//       })
+//
+//     })
+//   })
+// })
 
 // router.get('/class/:id', function(req, res) {
 //   var classId = req.params.id;
