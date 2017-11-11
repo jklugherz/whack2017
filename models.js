@@ -8,22 +8,21 @@ var userSchema = mongoose.Schema({
 
 var professorSchema = mongoose.Schema({
   fname: String,
-  lname: String,
-  dept: String
+  lname: String
 });
 
-var classSchema = mongoose.Schema({
-  name: String,
-  professor: [{ type: Schema.Types.ObjectId, ref: Professor }],
-  title: String
-})
+// var classSchema = mongoose.Schema({
+//   name: String,
+//   professor: [{ type: mongoose.Schema.Types.ObjectId, ref: Professor }],
+//   title: String
+// })
 
 User = mongoose.model('User', userSchema);
 Professor = mongoose.model('Professor', professorSchema);
-Class = mongoose.model('Class', classSchema);
+//Class = mongoose.model('Class', classSchema);
 
 module.exports = {
     User:User,
     Professor:Professor,
-    Class:Class
+    //Class:Class
 };
