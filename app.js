@@ -9,6 +9,8 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var mongoose = require('mongoose');
 var connect = process.env.MONGODB_URI;
+var data = require('./info');
+console.log(data.Data);
 
 var REQUIRED_ENV = "SECRET MONGODB_URI".split(" ");
 
@@ -118,7 +120,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 app.listen(port);
 console.log('Express started. Listening on port %s', port);
 
