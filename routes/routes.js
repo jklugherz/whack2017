@@ -44,7 +44,6 @@ router.post('/addprofreview', function(req, res) {
     if (err) {
       console.log('error', err);
     } else {
-
       var profReview = new Review({
         content: req.body.comment,
         respect: req.body.respect,
