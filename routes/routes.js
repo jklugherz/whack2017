@@ -39,17 +39,18 @@ router.get('/addprofreview', function(req, res) {
 })
 
 router.post('/addprofreview', function(req, res) {
+  console.log(req.body);
   Professor.findOne({ lname: req.body.lastName.toUpperCase(), fname: req.body.firstName.toUpperCase() }, function(err, professor) {
     if (err) {
       console.log('error', err);
     } else {
-
       var profReview = new Review({
         content: req.body.comment,
         respect: req.body.respect,
         difficulty: req.body.difficulty,
         effectiveness: req.body.effective
       });
+
       profReview.save(function(err) {
         if (err) {
           console.log('error', err)
@@ -72,10 +73,18 @@ router.post('/addprofreview', function(req, res) {
 router.get('/professor/:id', function(req, res) {
   var profId = req.params.id;
   Professor.findById(profId, function(err, professor) {
+    var reviews = [];
+    console.log(professor.reviews);
+    professor.reviews.forEach(function(review) {
+      Review.findById(review, function(err, foundReview) {
+        reviews.push(foundReview);
+        console.log(foundReview);
+      })
+    })
     res.render('professorPage', {
       firstName: professor.fname,
       lastName: professor.lname,
-      reviews: professor.reviews
+      reviews: reviews
     })
   })
 })
