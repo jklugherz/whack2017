@@ -33,15 +33,45 @@ router.get('/userpage', function(req, res, next) {
   });
 });
 
-router.post('/findprof', function(req, res) {
-  Professor.findOne({ lname: req.body.lname, fname: req.body.fname }, function(err, professor) {
+router.post('/addreview', function(req, res) {
+  Professor.findOne({ lname: req.body.lastName, fname: req.body.firstName }, function(err, professor) {
     if (err) {
       console.log('error', err);
     } else {
-      res.redirect('/prof/' + professor._id)
+      professor.reviews.push(req.body.comment);
+      professor.save(function(err) {
+        if (err) {
+          console.log('error', err);
+        } else {
+          res.redirect('/professor/' + professor._id);
+        }
+      })
     }
   })
 })
+
+router.get('/professor/:id', function(req, res) {
+  var profId = req.params.id;
+  Professor.findById(profId, function(err, professor) {
+    res.render('professorPage', {
+      firstName: professor.fname,
+      lastName: professor.lname,
+      reviews: professor.reviews
+    })
+  })
+})
+
+// router.get('/class/:id', function(req, res) {
+//   var classId = req.params.id;
+//   Class.findById(classId, function(err, class) {
+//     res.render('classPage', {
+//       name: class.name,
+//       reviews: class.reviews
+//     })
+//   })
+// })
+
+
 
 
 
