@@ -1,0 +1,11 @@
+<div>
+  <h1>{{lastName}}</h1>
+  <h1>{{firstName}}</h1>
+  <div class="body">
+    <ul class="reviews">
+      {{#each professor}}
+      <li>{{this.review}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
