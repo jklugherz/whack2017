@@ -3,7 +3,7 @@ var router = express.Router();
 var models = require('../models');
 var User = models.User;
 var Professor = models.Professor;
-var ProfReview = models.ProfReview;
+var Review = models.Review;
 
 //////////////////////////////// PUBLIC ROUTES ////////////////////////////////
 // Users who are not logged in can see these routes
@@ -35,21 +35,35 @@ router.get('/userpage', function(req, res, next) {
 });
 
 router.get('/addprofreview', function(req, res) {
-  res.render('protectedRoute');
+  res.render('ProfReview');
 })
 
 router.post('/addprofreview', function(req, res) {
-  Professor.findOne({ lname: req.body.lastName, fname: req.body.firstName }, function(err, professor) {
+  Professor.findOne({ lname: req.body.lastName.toUpperCase(), fname: req.body.firstName.toUpperCase() }, function(err, professor) {
     if (err) {
       console.log('error', err);
     } else {
-      professor.reviews.push(req.body.comment);
-      professor.save(function(err) {
+
+      var profReview = new Review({
+        content: req.body.comment,
+        respect: req.body.respect,
+        difficulty: req.body.difficulty,
+        effectiveness: req.body.effective
+      });
+      profReview.save(function(err) {
         if (err) {
-          console.log('error', err);
-        } else {
-          res.redirect('/professor/' + professor._id);
+          console.log('error', err)
         }
+      })
+      .then(() => {
+        professor.reviews.push(profReview);
+        professor.save(function(err) {
+          if (err) {
+            console.log('error', err);
+          } else {
+            res.redirect('/professor/' + professor._id);
+          }
+        })
       })
     }
   })
