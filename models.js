@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var userSchema = mongoose.Schema({
   username: String,
@@ -6,12 +7,18 @@ var userSchema = mongoose.Schema({
   phone: String
 });
 
+User = mongoose.model('User', userSchema);
+
+
 var professorSchema = mongoose.Schema({
   fname: String,
   lname: String,
-  reviews: [{ type: Schema.Types.ObjectId, ref: Review }],
-  rating: Integer
+  reviews: [String],
+  rating: Number
 });
+
+Professor = mongoose.model('Professor', professorSchema);
+
 
 var classSchema = mongoose.Schema({
   name: String,
@@ -21,8 +28,6 @@ var classSchema = mongoose.Schema({
 });
 
 
-User = mongoose.model('User', userSchema);
-Professor = mongoose.model('Professor', professorSchema);
 //Class = mongoose.model('Class', classSchema);
 
 module.exports = {
