@@ -10,15 +10,23 @@ var userSchema = mongoose.Schema({
 User = mongoose.model('User', userSchema);
 
 
+var reviewSchema = mongoose.Schema({
+  content: String,
+  respect: Number,
+  difficulty: Number,
+  effectiveness: Number
+});
+
+Review = mongoose.model('Review', reviewSchema);
+
+
 var professorSchema = mongoose.Schema({
   fname: String,
   lname: String,
-  reviews: [String],
-  rating: Number
+  reviews: [{ type: Schema.Types.ObjectId, ref: Review }]
 });
 
 Professor = mongoose.model('Professor', professorSchema);
-
 
 var classSchema = mongoose.Schema({
   name: String,
@@ -30,8 +38,11 @@ var classSchema = mongoose.Schema({
 
 //Class = mongoose.model('Class', classSchema);
 
+
+
 module.exports = {
     User:User,
     Professor:Professor,
-    //Class:Class
+    //Class:Class,
+    Review:Review
 };

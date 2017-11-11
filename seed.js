@@ -11,9 +11,10 @@ function seedProf (item, index) {
   var profName = item["Professor(s)"]
   var first = profName.split(/\s+/g)[0];
   var last = profName.split(/\s+/g)[1];
+
   Professor.find({fname: first, lname: last}, function (err, profs) {
       if(profs.length == 0) {
-        var prof = new Professor({ fname:first, lname:last, reviews: [], rating: 0});
+        var prof = new Professor({ fname:first, lname:last, reviews: []});
         prof.save(function (err, prof) {
           if (err) return console.error(err);
         });
