@@ -35,7 +35,7 @@ router.get('/userpage', function(req, res, next) {
 });
 
 router.get('/addprofreview', function(req, res) {
-  res.render('ProfReview');
+  res.render('profReview');
 })
 
 router.post('/addprofreview', function(req, res) {
