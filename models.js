@@ -9,15 +9,16 @@ var userSchema = mongoose.Schema({
 var professorSchema = mongoose.Schema({
   fname: String,
   lname: String,
-  dept: String
+  reviews: [{ type: Schema.Types.ObjectId, ref: Review }],
+  rating: Integer
 });
 
 var classSchema = mongoose.Schema({
   name: String,
   professor: [{ type: Schema.Types.ObjectId, ref: Professor }],
-  title: String
-})
-
+  title: String,
+  department: String
+});
 
 
 User = mongoose.model('User', userSchema);
