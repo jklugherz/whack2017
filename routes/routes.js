@@ -3,6 +3,7 @@ var router = express.Router();
 var models = require('../models');
 var User = models.User;
 var Professor = models.Professor;
+var ProfReview = models.ProfReview;
 
 //////////////////////////////// PUBLIC ROUTES ////////////////////////////////
 // Users who are not logged in can see these routes
@@ -33,7 +34,11 @@ router.get('/userpage', function(req, res, next) {
   });
 });
 
-router.post('/addreview', function(req, res) {
+router.get('/addprofreview', function(req, res) {
+  res.render('protectedRoute');
+})
+
+router.post('/addprofreview', function(req, res) {
   Professor.findOne({ lname: req.body.lastName, fname: req.body.firstName }, function(err, professor) {
     if (err) {
       console.log('error', err);
