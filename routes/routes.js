@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var User = models.User;
+var Professor = models.Professor;
 
 //////////////////////////////// PUBLIC ROUTES ////////////////////////////////
 // Users who are not logged in can see these routes
@@ -26,11 +27,23 @@ router.use(function(req, res, next){
 //////////////////////////////// PRIVATE ROUTES ////////////////////////////////
 // Only logged in users can see these routes
 
-router.get('/protected', function(req, res, next) {
-  res.render('protectedRoute', {
+router.get('/userpage', function(req, res, next) {
+  res.render('userpage', {
     username: req.user.username,
   });
 });
+
+router.post('/findprof', function(req, res) {
+  Professor.findOne({ lname: req.body.lname, fname: req.body.fname }, function(err, professor) {
+    if (err) {
+      console.log('error', err);
+    } else {
+      res.redirect('/prof/' + professor._id)
+    }
+  })
+})
+
+
 
 ///////////////////////////// END OF PRIVATE ROUTES /////////////////////////////
 
