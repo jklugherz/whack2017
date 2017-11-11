@@ -14,7 +14,10 @@ router.get('/', function(req, res, next) {
 
 router.use(function(req, res, next){
   if (!req.user) {
+    console.log("no user")
+    console.log(req.user)
     res.redirect('/login');
+
   } else {
     return next();
   }
