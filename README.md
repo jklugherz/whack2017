@@ -1,4 +1,4 @@
-# Horizons Hackathon Template.
+# WHACK2017.
 
 ## Steps 1: Get your project set-up
 You have two ways of working on your project: Local and Gomix.
@@ -13,10 +13,3 @@ You have two ways of working on your project: Local and Gomix.
     ```
 
 1. Run `source .env`, and you are good to go!
-
-### Glitch Development
-
-1. Go to https://glitch.com/edit/#!/horizons-hackathon and click
-  `Remix this 🎤`
-1. Select `.env` on the left panel, add your `MONGODB_URI` and `SECRET`
-1. Click `Show` at the top to preview your app!
