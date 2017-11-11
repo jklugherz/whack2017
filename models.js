@@ -18,8 +18,6 @@ var classSchema = mongoose.Schema({
   title: String
 })
 
-
-
 User = mongoose.model('User', userSchema);
 Professor = mongoose.model('Professor', professorSchema);
 Class = mongoose.model('Class', classSchema);
