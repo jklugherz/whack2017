@@ -73,10 +73,18 @@ router.post('/addprofreview', function(req, res) {
 router.get('/professor/:id', function(req, res) {
   var profId = req.params.id;
   Professor.findById(profId, function(err, professor) {
+    var reviews = [];
+    console.log(professor.reviews);
+    professor.reviews.forEach(function(review) {
+      Review.findById(review, function(err, foundReview) {
+        reviews.push(foundReview);
+        console.log(foundReview);
+      })
+    })
     res.render('professorPage', {
       firstName: professor.fname,
       lastName: professor.lname,
-      reviews: professor.reviews
+      reviews: reviews
     })
   })
 })
