@@ -39,6 +39,7 @@ router.get('/addprofreview', function(req, res) {
 })
 
 router.post('/addprofreview', function(req, res) {
+  console.log(req.body);
   Professor.findOne({ lname: req.body.lastName.toUpperCase(), fname: req.body.firstName.toUpperCase() }, function(err, professor) {
     if (err) {
       console.log('error', err);
@@ -50,6 +51,7 @@ router.post('/addprofreview', function(req, res) {
         difficulty: req.body.difficulty,
         effectiveness: req.body.effective
       });
+
       profReview.save(function(err) {
         if (err) {
           console.log('error', err)
