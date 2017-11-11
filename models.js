@@ -14,7 +14,7 @@ var professorSchema = mongoose.Schema({
 
 var classSchema = mongoose.Schema({
   name: String,
-  professor: [{ type: Schema.Types.ObjectId, ref: 'Professor'}],
+  professor: [{ type: Schema.Types.ObjectId, ref: Professor }],
   title: String
 })
 
