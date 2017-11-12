@@ -3,7 +3,11 @@
   <div class="body">
     <ul class="reviews">
       {{#each reviews}}
-      <li>{{this.content}}</li>
+      <p>{{this.content}}<br>
+        <b>Respectfulness:</b> {{this.respect}} //
+        <b>Effectiveness:</b> {{this.effectiveness}} //
+        <b>Difficulty:</b> {{this.difficulty}}
+      </p>
       {{/each}}
     </ul>
   </div>
