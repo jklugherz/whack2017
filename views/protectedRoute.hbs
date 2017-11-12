@@ -1,0 +1,93 @@
+<h3>Welcome!</h3>
+<p>Welcome {{username}}. You can search for a class or professor to see reviews or leave feedback.</p>
+
+<p>You are {{username}}</p>
+
+<p>search bar</p>
+
+<h4>Feed Backform</h4>
+<section>
+  <div class = "feedback-form">
+    <div class = "form-body">
+      <form feedbackForm = "form">
+        <div class = "form-group">
+          <label for = "lastName">Professor Last Name:</label>
+          <input class = "form-control" name = "lastName" id = "lastName" autofocus>
+        </div>
+        <div class = "form-group">
+          <label for = "firstName">Professor First Name: </label>
+          <input class = "form-control" name = "firstName" id = "firstName" autofocus>
+        </div>
+        <div class = "form-group">
+          <label for="comment">General Feedback:</label>
+          <textarea class="form-control" name = "comment" rows="5" id="comment"></textarea>
+        </div>
+        <div class = "scales" id = "scaleRatings">
+          <p class = "description">Please rank the following categories on a scale from 1-5, 1 being the least.</p>
+          <span class = "scale-rate" id = "respect">
+            <p id = "Respectulness">Respectfulness</p>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="respect">1</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="respect">2</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="respect">3</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="respect">4</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="respect">5</label>
+            </div>
+          </span>
+          <span class = "scale-rate" id = "difficulty">
+            <p id = "difficulty">Difficulty</p>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="difficulty">1</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="difficulty">2</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="difficulty">3</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="difficulty">4</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="difficulty">5</label>
+            </div>
+          </span>
+          <span class = "scale-rate" id = "effective">
+            <p id = "effective">Effectiveness</p>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="effective">1</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="effective">2</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="effective">3</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="effective">4</label>
+            </div>
+            <div class = "radio-inline">
+              <label class="radio-inline"><input type="radio" name="effective">5</label>
+            </div>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success">Submit</button>
+  </div>
+</section>
+
+
+<br />
+
+<a href="/logout" class="btn btn-primary">Logout</a>
