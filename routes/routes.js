@@ -76,9 +76,9 @@ router.get('/professor/:id', function(req, res) {
       const reviews = professor.reviews.map(function(review) {
         return Review.findById(review)
       })
-
       return Promise.all(reviews)
         .then((allReviews) => {
+          //put algorithm here to find the totals?
           res.render('professorPage', {
             firstName: professor.fname,
             lastName: professor.lname,
