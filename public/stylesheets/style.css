@@ -1,5 +1,33 @@
 body {
   min-height: 75rem;
   padding-top: 6.5rem;
-  font: 14px "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 24px;
+  color: midnightblue;
+}
+
+.title {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 60px;
+
+}
+
+
+.container-home {
+  padding-top: 100px;
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+}
+
+.description {
+  width: 50%;
+  text-align: center;
+  margin: auto;
 }
