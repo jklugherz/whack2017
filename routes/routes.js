@@ -39,7 +39,6 @@ router.get('/addprofreview', function(req, res) {
 })
 
 router.post('/addprofreview', function(req, res) {
-  console.log(req.body);
   Professor.findOne({ lname: req.body.lastName.toUpperCase(), fname: req.body.firstName.toUpperCase() }, function(err, professor) {
     if (err) {
       console.log('error', err);
@@ -78,7 +77,7 @@ router.get('/professor/:id', function(req, res) {
         return Review.findById(review)
       })
 
-      Promise.all(reviews)
+      return Promise.all(reviews)
         .then((allReviews) => {
           res.render('professorPage', {
             firstName: professor.fname,
@@ -89,16 +88,17 @@ router.get('/professor/:id', function(req, res) {
     })
 })
 
-// router.get('/class/:id', function(req, res) {
-//   var classId = req.params.id;
-//   Class.findById(classId, function(err, class) {
-//     res.render('classPage', {
-//       name: class.name,
-//       reviews: class.reviews
-//     })
-//   })
-// })
 
+router.get('/profsearch', function(req, res) {
+  res.render('searchPage');
+})
+
+router.post('/profsearch', function(req, res) {
+  Professor.findOne({ lname: req.body.lastName.toUpperCase(), fname: req.body.firstName.toUpperCase() })
+  .then((professor) => {
+    res.redirect('/professor/' + professor._id)
+  })
+})
 
 
 
